@@ -5,9 +5,9 @@
 	if (!empty($citation)){
 		if (empty($_GET['citNum']) && empty($_GET['supCitNum'])){
 		?>
-			<h1>Liste des citations en attente de validation</h1>
+			<h1>Quote list awaiting approval</h1>
 			<table>
-				<th>Nom de l'enseignement</th><th>Libellé</th><th>Date</th><th>Valider</th><th>Supprimer</th></tr>
+				<th>Staff member name</th><th>Quote</th><th>Date</th><th>Approve</th><th>Delete</th></tr>
 				<?php //$produits est un tableau d'objet produit
 					foreach ($citation as $quote){?>
 						<tr><td><?php echo $quote->getPrenomProf()." ".$quote->getNomProf();?>
@@ -24,25 +24,25 @@
 		<?php
 		}
 		else if (!(empty($_GET['citNum']))){
-			$citationManager->validerCitation($_GET['citNum']);
+			$citationManager->SubmitCitation($_GET['citNum']);
 			?>
 			<br>
-			<img src="image/valid.png"><p> La citation a été validée !</p>
-			<p>Redirection automatique dans 2 secondes</p>
+			<img src="image/valid.png"><p> Quote successfully approved !</p>
+			<p>Automatic redirection in 2 seconds.</p>
 			<meta http-equiv="refresh" content="2; URL=index.php?page=14"><?php
 		}
 		else {
 			$citationManager->supprimerCitation($_GET['supCitNum']);
 			?>
 			<br>
-			<img src="image/valid.png"><p> La citation a été supprimée !</p>
-			<p>Redirection automatique dans 2 secondes</p>
+			<img src="image/valid.png"><p> Quote successfully deleted !</p>
+			<p>Automatic redirection in 2 seconds.</p>
 			<meta http-equiv="refresh" content="2; URL=index.php?page=14"><?php
 		}
 	}
 	else {
 		?>
 		<br>
-		<p><strong>Aucune citation à valider</strong></p>
+		<p><strong>No quote awaiting approval</strong></p>
 		<?php
 	}?>

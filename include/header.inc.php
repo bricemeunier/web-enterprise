@@ -1,12 +1,12 @@
 <?php
 session_start();
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <?php
-		$title = "Bienvenue sur le site du bétisier de l'IUT.";?>
+		$title = "Best quotes";?>
 		<title>
 		<?php echo $title ?>
 		</title>
@@ -17,11 +17,11 @@ session_start();
 	<div id="header">
 		<div id="connect"><?php
     if (!isset($_SESSION['pseudo'])) {?>
-      <a href=index.php?page=10><strong>Connexion</strong></a>
+      <a href=index.php?page=10><strong>Login</strong></a>
     <?php
     }
     else {?>
-      <a href=index.php?page=11>Utilisateur : <strong><?php echo $_SESSION['pseudo'];?> &nbsp; &nbsp; Déconnexion</strong></a>
+      <a href=index.php?page=11>User : <strong><?php echo $_SESSION['pseudo'];?> &nbsp; &nbsp; Logout</strong></a>
     <?php
   }
    ?>
@@ -31,7 +31,7 @@ session_start();
 
 			</div>
 			<div id="titre">
-				Le bétisier de l'IUT,<br />Partagez les meilleures perles !!!
+				Funny quotes,<br />Share your best ones !!!
 			</div>
 		</div>
 	</div>

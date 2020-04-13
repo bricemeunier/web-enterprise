@@ -5,10 +5,10 @@
 	$citation=$citationManager->getAllCitation();
 	$nbCitation=$citationManager->getNbCitation();
 	?>
-		<h1>Liste des citations déposées</h1>
-		<h3>Actuellement <?php echo $nbCitation->total; ?> citations sont enregistrées</h3>
+		<h1>Quotes list</h1>
+		<h3>Currently <?php echo $nbCitation->total; ?> quotes registered</h3>
 	<table>
-		<tr><th>Nom de l'enseignement</th><th>Libellé</th><th>Date</th><th>Moyenne des notes</th>
+		<tr><th>Staff member name</th><th>Quote</th><th>Date</th><th>Average mark</th>
 			<?php
 			if (isset($_SESSION['user_num'])) {
 				if ($persManager->estEtudiant($_SESSION['user_num'])){

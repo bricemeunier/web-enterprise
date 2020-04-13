@@ -6,14 +6,14 @@
    ?>
 
 
-  <h1><strong>Pour vous connecter</strong></h1>
+  <h1><strong>Login</strong></h1>
   <form action="#" method="post">
 
-  	<strong>Nom d'utilisateur :  </strong><input type="text" name="user" required><br>
-  	<strong>Mot de passe :  </strong><input type="password" name="password" required><br>
+  	<strong>Username :  </strong><input type="text" name="user" required><br>
+  	<strong>password :  </strong><input type="password" name="password" required><br>
     <img src="image/nb/<?php echo $image1; ?>.jpg"><strong> + </strong><img src="image/nb/<?php echo $image2; ?>.jpg"><strong> = </strong>
     <input type="number" name="captcha" required><br>
-  	<input type="submit" value="Valider"/>
+  	<input type="submit" value="Submit"/>
   </form>
   <?php
 }
@@ -32,9 +32,9 @@ else {
       $_SESSION['admin']=$verif->per_admin;
       $_SESSION['user_num']=$verif->per_num;
       ?>
-      <h1><strong>Pour vous connecter</strong></h1>
-      <img src="image/valid.png"> Vous avez bien été connecté !<br>
-      Redirection automatique dans 2 secondes.
+      <h1><strong>Login</strong></h1>
+      <img src="image/valid.png"> Login successfull !<br>
+      Automatic redirection in 2 seconds.
       <meta http-equiv="refresh" content="2; URL=index.php?page=0">
       <?php
     }

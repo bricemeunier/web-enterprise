@@ -5,17 +5,17 @@ $personne=$persManager->getAllPersonne();
 
  if (empty($_POST['per_num'])){
 	?>
-	<h1>Supprimer une personne</h1>
+	<h1>Delete a person</h1>
 
 	 <form method="post" action="#">
-	   <label>Nom :</label><select name="per_num">
+	   <label>Name :</label><select name="per_num">
 	     <?php
 	     foreach ($personne as $pers){
 	       ?><option value="<?php echo $pers->getPersNum();?>"><?php echo $pers->getPersPrenom()." ".$pers->getPersNom();?></option><?php
 	     }
 	     ?>
 	   </select>
-	   <input type="submit" value="Valider">
+	   <input type="submit" value="Submit">
 	 </form>
 	<?php
 	}
@@ -23,7 +23,7 @@ $personne=$persManager->getAllPersonne();
 	  $persManager->supprimerPersonne($_POST['per_num']);
 	  ?>
 	  <br>
-	  <img src="image/valid.png"><p>La personne a été supprimée !</p>
-	  <p>Redirection automatique dans 2 secondes</p>
+	  <img src="image/valid.png"><p>Person successfully deleted !</p>
+	  <p>Automatic redirection in 2 seconds.</p>
 	  <meta http-equiv="refresh" content="2; URL=index.php?page=4"><?php
 	} ?>

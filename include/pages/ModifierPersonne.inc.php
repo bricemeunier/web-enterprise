@@ -14,10 +14,10 @@
 
 	if (empty($_GET['num'])){
 	?>
-	<h1>Modifier une personne enregistrée</h1><br>
-	<h3>Actuellement <?php echo $nbPersonne->total; ?> personnes sont enregistrées</h3>
+	<h1>Update people's info</h1><br>
+	<h3>Currently <?php echo $nbPersonne->total; ?> people registered</h3>
 	<table>
-		<tr><th>Nom</th><th>Prénom</th><th>Modifier</th></tr>
+		<tr><th>Surname</th><th>First Name</th><th>Update</th></tr>
 		<?php //$produits est un tableau d'objet produit
 			foreach ($personne as $pers){?>
 				</td><td><?php echo $pers->getPersNom();?>
@@ -33,27 +33,27 @@
 	else {
 		if (empty($_POST['per_nom']) && empty($_POST["departement"]) && empty($_POST["fonction"])) {
 			$pers=$personneManager->getPers($_GET['num']);?>
-			<h1>Modifier une personne</h1><br>
+			<h1>Update people's info</h1><br>
 			<form method="post" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
-			    <label>Nom :</label><input name="per_nom" type="text" value=<?php echo $pers->getPersNom();?> required><br>
-			    <label>Prénom : </label><input type="text" name="per_prenom" value=<?php echo $pers->getPersPrenom();?> required><br>
-			    <label>Téléphone:</label><input type="tel" name="per_tel" value=<?php echo $pers->getPersTel();?> required><br>
-			    <label>Mail :</label><input type="email" name="per_mail" value=<?php echo $pers->getPersMail();?> required><br>
+			    <label>Surname :</label><input name="per_nom" type="text" value=<?php echo $pers->getPersNom();?> required><br>
+			    <label>First Name : </label><input type="text" name="per_prenom" value=<?php echo $pers->getPersPrenom();?> required><br>
+			    <label>Phone:</label><input type="tel" name="per_tel" value=<?php echo $pers->getPersTel();?> required><br>
+			    <label>Email :</label><input type="email" name="per_mail" value=<?php echo $pers->getPersMail();?> required><br>
 			    <label>Login :</label><input type="text" name="per_login" value=<?php echo $pers->getPersLogin();?> required><br>
-			    <label>Changer le mot de Passe :</label><input type="password" name="per_pwd" ><br>
+			    <label>Change password :</label><input type="password" name="per_pwd" ><br>
 					<?php
 					if ($personneManager->estEtudiant($_GET['num'])) {?>
-						<label>Catégorie :</label><input type="radio" name="categorie" value="etudiant" checked> Etudiant
-			  															<input type="radio" name="categorie" value="personnel"> Personnel<br>
+						<label>Category :</label><input type="radio" name="categorie" value="etudiant" checked> Student
+			  															<input type="radio" name="categorie" value="personnel"> Staff member<br>
 					<?php
 					}
 					else {?>
-						<label>Catégorie :</label><input type="radio" name="categorie" value="etudiant" > Etudiant
-			  										<input type="radio" name="categorie" value="personnel" checked> Personnel<br>
+						<label>Category :</label><input type="radio" name="categorie" value="etudiant" > Student
+			  										<input type="radio" name="categorie" value="personnel" checked> Staff member<br>
 					<?php
 					}
 					?>
-			    <input type="submit" value="Valider">
+			    <input type="submit" value="Submit">
 			</form>
 			<?php
 		}
@@ -76,9 +76,9 @@
 
 						$etu=$personneManager->getEtu($num);
 						?>
-		        <h1><strong>Modifier un étudiant</strong></h1>
+		        <h1><strong>Update student's info</strong></h1>
 		        <form method="post" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
-		            <label>Département :</label><select name="departement">
+		            <label>School :</label><select name="departement">
 		            <?php
 		            foreach ($dep as $depart){
 									if ($depart->getDepNum()==$etu->dep_num){
@@ -91,7 +91,7 @@
 		            ?>
 		            </select>
 		            <br>
-		            <label>Année : </label><select name="annee">
+		            <label>Year : </label><select name="annee">
 		            <?php
 		            foreach ($div as $division){
 									if ($division->getDivNum()==$etu->div_num){
@@ -104,16 +104,16 @@
 		            ?>
 		            </select>
 		            <br>
-		            <input type="submit" value="Valider">
+		            <input type="submit" value="Submit">
 		        </form><?php
 		      }
 		      else{
 						$sal=$personneManager->getSal($_SESSION['numPersModif']);
 						?>
-		        <h1><strong>Modifier un salarié</strong></h1>
+		        <h1><strong>Update staff member's info</strong></h1>
 		        <form method="post" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
-		            <label>Téléphone professionnel :</label><input type="tel" name="tel_pro" value=<?php echo $sal->sal_telprof;?> required><br>
-		            <label>Fonction : </label><SELECT name="fonction">
+		            <label>Professional phone :</label><input type="tel" name="tel_pro" value=<?php echo $sal->sal_telprof;?> required><br>
+		            <label>Position : </label><SELECT name="fonction">
 		            <?php
 		            foreach ($fon as $fonction){
 									if ($fonction->getFonNum()==$sal->fon_num){
@@ -126,13 +126,13 @@
 		            ?>
 		            </select>
 		            <br>
-		            <input type="submit" value="Valider">
+		            <input type="submit" value="Submit">
 		        </form><?php
 		      }
 		    }
 		    else {
 		        ?><meta http-equiv="refresh" content="3; URL= <?php echo $_SERVER['HTTP_REFERER'];?>">
-		        <strong>Login <?php echo $_POST['per_login'];?> déjà utilisé</strong><?php
+		        <strong>Login <?php echo $_POST['per_login'];?> not available</strong><?php
 		    }
 		}
 		else {
@@ -144,7 +144,7 @@
 		    $etudiantManager->modifierEtu($_SESSION['numPersModif']);
 		    ?>
 		    <br>
-		    <img src="image/valid.png"> L'étudiant a été ajoutée !
+		    <img src="image/valid.png"> Student added successfully !
 		    <?php
 		  }
 		  else {
@@ -154,7 +154,7 @@
 		    $salarieManager->add($sal);
 		    ?>
 		    <br>
-		    <img src="image/valid.png"> Le salarie a été ajoutée !<?php
+		    <img src="image/valid.png"> Staff member added successfully !<?php
 		  }
 		}
 	}

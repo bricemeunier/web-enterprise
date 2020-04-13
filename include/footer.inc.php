@@ -1,8 +1,8 @@
 
 <div id="footer">
-Le bétisier de l'IUT à votre service, depuis novembre 2013
+Write the most famous or funniest quote you know !
 <br />
-    © IUT du Limousin  DUT Informatique année 2 
+    © Brice Meunier, Honours Year at the Robert Gordon University
 
 </div>
 </body>

@@ -7,10 +7,10 @@ $salManager=new SalarieManager($pdo);
 $salarie=$salManager->getAllSalarie();
 
 ?>
-  <h1>Rechercher une citation</h1><br>
+  <h1>Search a quote</h1><br>
 
   <form method="post" action="#">
-      <label>Nom de l'enseignant :</label><select name="per_num">
+      <label>Staff member name :</label><select name="per_num">
         <option value="0">----------</option>
       <?php
       foreach ($salarie as $sal){
@@ -29,11 +29,11 @@ $salarie=$salManager->getAllSalarie();
       }
       ?>
       </select>
-      <label>Date Citation : </label><input type="date" name="cit_date"
+      <label>Date : </label><input type="date" name="cit_date"
       <?php if (!(empty($_POST['cit_date']))) echo "value='".$_POST['cit_date']."'";?>></input>
-      <label>Note : </label><input type="text" name="cit_moy"
+      <label>Mark : </label><input type="text" name="cit_moy"
       <?php if (!(empty($_POST['cit_moy']))) echo "value='".$_POST['cit_moy']."'";?>></input>
-      <input type="submit" value="Valider">
+      <input type="submit" value="Submit">
   </form>
   <br>
 <?php
@@ -43,12 +43,12 @@ if (!(empty($_POST))){
 }
 
 if (empty($citation)){
-  echo '<img src="image/erreur.png">Aucune citation n\'a été trouvée !';
+  echo '<img src="image/erreur.png">No quote found, try again !';
 }
 else {
 ?>
 <table>
-  <tr><th>Nom de l'enseignement</th><th>Libellé</th><th>Date</th><th>Moyenne des notes</th><th>Noter</th></tr>
+  <tr><th>Staff member name</th><th>Quote</th><th>Date</th><th>Mark average</th><th>Mark</th></tr>
   <?php //$produits est un tableau d'objet produit
     foreach ($citation as $quote){?>
       <tr><td><?php echo $quote->getPrenomProf()." ".$quote->getNomProf();?>

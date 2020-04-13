@@ -1,2 +1,1 @@
-<img class="centreImage" src="image/logo.gif" alt="Covoiturage IUT" title="Covoiturage IUT Limousin"/>
-	
+<img class="centreImage" src="image/rgu.png" alt="RGU computer science" title="RGU Computer Science"/>
