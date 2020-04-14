@@ -6,39 +6,39 @@ class CityManager{
 
 		}
     public function add($city){
-            $requete = $this->db->prepare(
-			'INSERT INTO ville (vil_nom) VALUES (:nom);');
+            $req = $this->db->prepare(
+			'INSERT INTO city (city_name) VALUES (:name);');
 
-			$requete->bindValue(':nom',$city->getCityNom());
+			$req->bindValue(':name',$city->getCityName());
 
-			$requete->execute();
+			$req->execute();
     }
 
-		public function supCity($citynum){
+		public function deleteCity($citynum){
 
-			$requete = $this->db->prepare(
-			'UPDATE departement SET vil_num=NULL WHERE vil_num=:num');
+			$req = $this->db->prepare(
+			'UPDATE school SET city_num=NULL WHERE city_num=:num');
 
-			$requete->bindValue(':num',$citynum);
-			$retour=$requete->execute();
+			$req->bindValue(':num',$citynum);
+			$req->execute();
 
-      $requete = $this->db->prepare(
-			'DELETE FROM ville WHERE vil_num=:num');
+      $req = $this->db->prepare(
+			'DELETE FROM city WHERE city_num=:num');
 
-			$requete->bindValue(':num',$citynum);
-			$retour=$requete->execute();
+			$req->bindValue(':num',$citynum);
+			$req->execute();
     }
 
-		public function modif($citynum,$array){
-			$requete = $this->db->prepare(
-			"UPDATE ville SET vil_nom =:nom WHERE vil_num=$citynum");
-			$requete->bindValue(':nom',$array["cityNom"]);
-			$retour=$requete->execute();
+		public function update($citynum,$array){
+			$req = $this->db->prepare(
+			"UPDATE city SET city_name =:name WHERE city_num=$citynum");
+			$req->bindValue(':name',$array["cityName"]);
+			$req->execute();
 		}
 
-    public function getNbCity(){
-      $requete='SELECT COUNT(*) as total FROM ville';
-      $sql=$this->db->prepare($requete);
+    public function getCityNumber(){
+      $req='SELECT COUNT(*) as total FROM city';
+      $sql=$this->db->prepare($req);
       $sql->execute();
       return $sql->fetch(PDO::FETCH_OBJ);
     }
@@ -46,29 +46,29 @@ class CityManager{
 
 
 		public function getAllCity(){
-			$listeCity=array();
+			$listCity=array();
 
-			$sql='SELECT vil_num,vil_nom FROM ville ORDER BY vil_num';
+			$sql='SELECT city_num,city_name FROM city ORDER BY city_name';
 
-			$requete=$this->db->prepare($sql);
-			$requete->execute();
+			$req=$this->db->prepare($sql);
+			$req->execute();
 
-			while ($city=$requete->fetch(PDO::FETCH_OBJ)){
-				$listeCity[]=new City($city);
+			while ($city=$req->fetch(PDO::FETCH_OBJ)){
+				$listCity[]=new City($city);
 			}
 
-			$requete->closeCursor();
+			$req->closeCursor();
 
-			return $listeCity;
+			return $listCity;
 		}
 
-		public function recherche($nomCity){
-			$sql="SELECT count(*) as verif FROM ville WHERE vil_nom='".$nomCity."'";
-			$requete=$this->db->prepare($sql);
-			$requete->execute();
+		public function search($cityName){
+			$sql="SELECT count(*) as verif FROM city WHERE city_name='".$cityName."'";
+			$req=$this->db->prepare($sql);
+			$req->execute();
 
-			$city=$requete->fetch(PDO::FETCH_OBJ);
-			$requete->closeCursor();
+			$city=$req->fetch(PDO::FETCH_OBJ);
+			$req->closeCursor();
 			return $city->verif==0;
 
 		}

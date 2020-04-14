@@ -1,15 +1,15 @@
 <?php
   $pdo=new Mypdo();
-  $personneManager =new PersonneManager($pdo);
-  if ($personneManager->estEtudiant($_GET['num'])){
-    $personne=$personneManager->getEtudiant($_GET['num']);
+  $persManager =new PeopleManager($pdo);
+  if ($persManager->isStudent($_GET['num'])){
+    $person=$persManager->getDetailsStudent($_GET['num']);
     ?>
-    <h1>Details on student <?php echo $_GET['nom']?></h1><br>
+    <h1>Details on student <?php echo $_GET['name']?></h1><br>
     <table>
       <tr><th>First Name</th><th>Email</th><th>Phone</th><th>School</th><th>City</th></tr><tr>
       <?php
-      foreach($personne as $pers=>$valeur){?>
-          <td><?php echo $valeur;?></td>
+      foreach($person as $pers=>$val){?>
+          <td><?php echo $val;?></td>
           <?php
         }
       ?>
@@ -18,14 +18,14 @@
     <?php
   }
   else {
-    $personne=$personneManager->getSalarie($_GET['num']);
+    $person=$persManager->getDetailsStaff($_GET['num']);
     ?>
-    <h1>Details on staff member <?php echo $_GET['nom']?></h1><br>
+    <h1>Details on staff member <?php echo $_GET['name']?></h1><br>
     <table>
     <tr><th>First Name</th><th>Email</th><th>Phone</th><th>Professional phone</th><th>Position</th></tr><tr>
     <?php
-    foreach($personne as $pers=>$valeur){?>
-      <td><?php echo $valeur;?></td>
+    foreach($person as $pers=>$val){?>
+      <td><?php echo $val;?></td>
       <?php
     }
     ?>

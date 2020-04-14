@@ -1,20 +1,20 @@
 <?php
 class City {
 	private $cityNum;
-	private $cityNom;
+	private $cityName;
 
 
-		public function __construct($valeurs = array()){
-				if (!empty($valeurs)){
-					$this->affecte($valeurs);
+		public function __construct($val = array()){
+				if (!empty($val)){
+					$this->create($val);
 				}
 			}
 
-		public function affecte($donnees){
-			foreach($donnees as $attribut=>$valeur){
-				switch ($attribut){
-					case 'vil_num':$this->setCityNum($valeur);break;
-					case 'vil_nom':$this->setCityNom($valeur);break;
+		public function create($data){
+			foreach($data as $attributes=>$value){
+				switch ($attributes){
+					case 'city_num':$this->setCityNum($value);break;
+					case 'city_name':$this->setCityName($value);break;
 				}
 			}
 		}
@@ -28,11 +28,11 @@ class City {
 			$this->cityNum=$id;
 		}
 
-		public function getCityNom(){
-			return $this->cityNom;
+		public function getCityName(){
+			return $this->cityName;
 		    }
-		public function setCityNom($nom){
-		    $this->cityNom=$nom;
+		public function setCityName($name){
+		    $this->cityName=$name;
 		    }
 
 }
