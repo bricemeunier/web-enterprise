@@ -135,7 +135,7 @@ class QuoteManager{
 					$sql=$sql."q.per_num=".$_POST['per_num']." ";
 					$filter++;
 				}
-				if (!(empty($_POST['cit_date']))){
+				if (!(empty($_POST['quo_date']))){
 					if ($filter!=0){
 						$sql=$sql."AND quo_date='".$_POST['quo_date']."' ";
 					}
@@ -151,7 +151,7 @@ class QuoteManager{
 					}
 					else {
 						$sql=$sql." AND ";
-						$sql=$sql."quo_moy='".$_POST['quo_moy']."' ";
+						$sql=$sql."quo_moy>='".$_POST['quo_moy']."' ";
 					}
 				}
 				$req=$this->db->prepare($sql);

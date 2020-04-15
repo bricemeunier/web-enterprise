@@ -16,17 +16,25 @@
 	?>
 	<h1>Update people's info</h1><br>
 	<h3>Currently <?php echo $nbPerson->total; ?> people registered</h3>
-	<table>
-		<tr><th>Surname</th><th>First Name</th><th>Update</th></tr>
-		<?php
-			foreach ($person as $pers){?>
-			</td><td><?php echo $pers->getPersonName();?>
-			</td><td><?php echo $pers->getPersonFirstName();?>
-			</td><td><a href=index.php?page=3&num=<?php echo $pers->getPersonNum();?>><img src="image/update.png"></a>
-				</td></tr>
-				<?php
-			}
-		?>
+	<table id="bigForm" class="highlight centered">
+		<thead>
+			<tr>
+				<th>Surname</th>
+				<th>First Name</th>
+				<th>Update</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				foreach ($person as $pers){?>
+				</td><td><?php echo $pers->getPersonName();?>
+				</td><td><?php echo $pers->getPersonFirstName();?>
+				</td><td><a href=index.php?page=3&num=<?php echo $pers->getPersonNum();?>><i class="material-icons prefix">create</i></a>
+					</td></tr>
+					<?php
+				}
+			?>
+		</tbody>
 	</table>
 	<?php
 	}
@@ -34,27 +42,76 @@
 		if (empty($_POST['per_name']) && empty($_POST["school"]) && empty($_POST["position"])) {
 			$pers=$persManager->getPerson($_GET['num']);?>
 			<h1>Update people's info</h1><br>
-			<form method="post" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
-			    <label>Surname :</label><input name="per_name" type="text" value=<?php echo $pers->getPersonName();?> required><br>
-			    <label>First Name : </label><input type="text" name="per_f_name" value=<?php echo $pers->getPersonFirstName();?> required><br>
-			    <label>Phone:</label><input type="tel" name="per_phone" value=<?php echo $pers->getPersonPhone();?> required><br>
-			    <label>Email :</label><input type="email" name="per_email" value=<?php echo $pers->getPersonEmail();?> required><br>
-			    <label>Login :</label><input type="text" name="per_login" value=<?php echo $pers->getPersonLogin();?> required><br>
-			    <label>Change password :</label><input type="password" name="per_password" ><br>
+			<div class="row" id="bigForm">
+			  <form class="col s12" method="post" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
+			    <div class="row">
+			      <div class="input-field col s6">
+			        <i class="material-icons prefix">face</i>
+			        <input id="first_name" type="text" name="per_f_name" class="validate" value=<?php echo $pers->getPersonFirstName();?> required>
+			        <label for="first_name">First Name</label>
+			      </div>
+			      <div class="input-field col s6">
+			        <input id="last_name" type="text" name="per_name" class="validate" value=<?php echo $pers->getPersonName();?> required>
+			        <label for="last_name">Last Name</label>
+			      </div>
+			    </div>
+			    <div class="row">
+			      <div class="input-field col s12">
+			        <i class="material-icons prefix">phone</i>
+			        <input id="tel_number" type="tel" name="per_phone" class="validate" value=<?php echo $pers->getPersonPhone();?> required>
+			        <label for="tel_number">Phone</label>
+			      </div>
+			    </div>
+			    <div class="row">
+			      <div class="input-field col s12">
+			        <i class="material-icons prefix">email</i>
+			        <input id="email_address" type="email" name="per_email" class="validate" value=<?php echo $pers->getPersonEmail();?> required>
+			        <label for="email_address">Email</label>
+			      </div>
+			    </div>
+			    <div class="row">
+			      <div class="input-field col s12">
+			        <i class="material-icons prefix">account_circle</i>
+			        <input id="username" type="text" name="per_login" class="validate" value=<?php echo $pers->getPersonLogin();?> required>
+			        <label for="username">Username</label>
+			      </div>
+			    </div>
+			    <div class="row">
+			      <div class="input-field col s12">
+			        <i class="material-icons prefix">lock</i>
+			        <input id="password" type="password" name="per_password" class="validate">
+			        <label for="password">New Password</label>
+			      </div>
+			    </div>
 					<?php
 					if ($persManager->isStudent($_GET['num'])) {?>
-						<label>Category :</label><input type="radio" name="category" value="student" checked> Student
-			  															<input type="radio" name="category" value="staff" disabled> Staff member<br>
+				    <label>
+				      <input class="with-gap" name="category" type="radio" value="student" checked />
+				      <span>Student</span>
+				    </label>
+				    <label>
+				      <input class="with-gap" name="category" type="radio" value="staff" disabled="disabled" />
+				      <span>Staff member</span>
+				    </label>
 					<?php
 					}
 					else {?>
-						<label>Category :</label><input type="radio" name="category" value="student" disabled> Student
-			  										<input type="radio" name="category" value="staff" checked> Staff member<br>
+						<label>
+							<input class="with-gap" name="category" type="radio" value="student" disabled="disabled" />
+							<span>Student</span>
+						</label>
+						<label>
+							<input class="with-gap" name="category" type="radio" value="staff" checked/>
+							<span>Staff member</span>
+						</label>
 					<?php
 					}
 					?>
-			    <input type="submit" value="Submit">
-			</form>
+			    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+			      <i class="material-icons right">send</i>
+			    </button>
+			  </form>
+			</div>
 			<?php
 		}
 
@@ -77,57 +134,85 @@
 						$stu=$persManager->getStudent($num);
 						?>
 		        <h1><strong>Update student's info</strong></h1>
-		        <form method="post" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
-		            <label>School :</label><select name="school">
-		            <?php
-		            foreach ($sch as $school){
-									if ($school->getSchNum()==$stu->sch_num){
-		              	?><option value="<?php echo $school->getSchNum();?>" selected><?php echo $school->getSchName();?></option><?php
-									}
-									else {
-										?><option value="<?php echo $school->getSchNum();?>"><?php echo $school->getSchName();?></option><?php
-									}
-		            }
-		            ?>
-		            </select>
-		            <br>
-		            <label>Year : </label><select name="year">
-		            <?php
-		            foreach ($year as $y){
-									if ($y->getYearNum()==$stu->year_num){
-		              	?><option value="<?php echo $y->getYearNum();?>" selected><?php echo $y->getYearName();?></option><?php
-									}
-									else {
-										?><option value="<?php echo $y->getYearNum();?>"><?php echo $y->getYearName();?></option><?php
-									}
-		            }
-		            ?>
-		            </select>
-		            <br>
-		            <input type="submit" value="Submit">
-		        </form><?php
+						<div class="row" id="smallForm">
+		          <form method="post" class="col s12" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
+		            <div class="row">
+		              <div class="col s12">
+		                <label>Select school</label>
+		                <select class="browser-default" name="school">
+		                  <?php
+											foreach ($sch as $school){
+												if ($school->getSchNum()==$stu->sch_num){
+					              	?><option value="<?php echo $school->getSchNum();?>" selected><?php echo $school->getSchName();?></option><?php
+												}
+												else {
+													?><option value="<?php echo $school->getSchNum();?>"><?php echo $school->getSchName();?></option><?php
+												}
+					            }
+		                  ?>
+		                </select>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="col s12">
+		                <label>Select year</label>
+		                <select class="browser-default" name="year">
+		                  <?php
+											foreach ($year as $y){
+												if ($y->getYearNum()==$stu->year_num){
+					              	?><option value="<?php echo $y->getYearNum();?>" selected><?php echo $y->getYearName();?></option><?php
+												}
+												else {
+													?><option value="<?php echo $y->getYearNum();?>"><?php echo $y->getYearName();?></option><?php
+												}
+					            }
+		                  ?>
+		                </select>
+		              </div>
+		            </div>
+		            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+		              <i class="material-icons right">send</i>
+		            </button>
+		          </form>
+		        </div>
+		       <?php
 		      }
 		      else{
 						$sta=$persManager->getStaff($_SESSION['numPersUpdated']);
 						?>
 		        <h1><strong>Update staff member's info</strong></h1>
-		        <form method="post" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
-		            <label>Professional phone :</label><input type="tel" name="staff_pro_phone" value=<?php echo $sta->staff_pro_phone;?> required><br>
-		            <label>Position : </label><SELECT name="position">
-		            <?php
-		            foreach ($pos as $position){
-									if ($position->getPosNum()==$sta->pos_num){
-		              	?><option value="<?php echo $position->getPosNum();?>" selected><?php echo $position->getPosName();?></option><?php
-									}
-									else {
-										?><option value="<?php echo $position->getPosNum();?>"><?php echo $position->getPosName();?></option><?php
-									}
-		            }
-		            ?>
-		            </select>
-		            <br>
-		            <input type="submit" value="Submit">
-		        </form><?php
+						<div class="row" id="smallForm">
+		          <form method="post" class="col s12" action="index.php?page=3&num=<?php echo $_GET['num'];?>">
+		            <div class="row">
+		              <div class="input-field col s12">
+		                <i class="material-icons prefix">phone</i>
+		                <input id="proPhoneForm" type="tel" name="staff_pro_phone" class="validate" value=<?php echo $sta->staff_pro_phone;?> required>
+		                <label for="proPhoneForm">Professional phone</label>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="col s12">
+		                <label>Select position</label>
+		                <select class="browser-default" name="position">
+		                  <?php
+											foreach ($pos as $position){
+												if ($position->getPosNum()==$sta->pos_num){
+					              	?><option value="<?php echo $position->getPosNum();?>" selected><?php echo $position->getPosName();?></option><?php
+												}
+												else {
+													?><option value="<?php echo $position->getPosNum();?>"><?php echo $position->getPosName();?></option><?php
+												}
+					            }
+		                  ?>
+		                </select>
+		              </div>
+		            </div>
+		            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+		              <i class="material-icons right">send</i>
+		            </button>
+		          </form>
+		        </div>
+		        <?php
 		      }
 		    }
 		    else {
@@ -141,19 +226,17 @@
 		    ?>
 		    <br>
 		    <img src="image/valid.png"> Student added successfully !
+				<p>Automatic redirection in 2 seconds.</p>
+				<meta http-equiv="refresh" content="2; URL=index.php?page=2">
 		    <?php
 		  }
 		  else {
 				$staffManager->updateStaff($_SESSION['numPersUpdated']);
-				/*
-		    $sta = new Staff($_SESSION['pers'],$_POST['staff_pro_phone'],$_POST['position']);
-		    $persManager->add($sta);
-		    $sta->setStaffNum($persManager->getIdPerson($_SESSION['previouslogin'])->per_num);
-		    $staffManager->add($sta);
-				*/
 		    ?>
 		    <br>
-		    <img src="image/valid.png"> Staff member added successfully !<?php
+		    <img src="image/valid.png"> Staff member added successfully !
+				<p>Automatic redirection in 2 seconds.</p>
+				<meta http-equiv="refresh" content="2; URL=index.php?page=2"><?php
 		  }
 		}
 	}

@@ -2,10 +2,20 @@
 <?php
 if (empty($_POST['mark_value'])){
   ?>
-  <form action="index.php?page=12&quo_num=<?php echo $_GET['quo_num'];?>" method="post">
-    <strong>Mark (0 to 20): </strong><input type="number" name="mark_value" min="0" max="20" required><br>
-    <input type="submit" value="Submit"/>
-  </form>
+  <div class="row" id="smallForm">
+    <form class="col s12" action="index.php?page=12&quo_num=<?php echo $_GET['quo_num'];?>" method="post">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">grade</i>
+          <input id="gradeForm" type="number" name="mark_value" min="0" max="20" class="validate" required>
+          <label for="gradeForm">Grade from 0 to 20</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
   <?php
 }
 else {

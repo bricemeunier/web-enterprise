@@ -1,19 +1,3 @@
-a {
-	color:#222222;
-	text-decoration: none;
-}
-table {
-  border-collapse: collapse;
-}
-th,tr,td {
-	border: 1px solid black;
-	padding: 15px;
-}
-
-a:visited{
-	color:#222222;
-	text-decoration: none;
-}
 body{
 	background-color:#222222;
 	color: black;
@@ -23,29 +7,33 @@ body{
 	padding:0;
 	position:relative;
 }
+
+#homeContainer {
+	width:75%;
+	margin:auto;
+	text-align: justify;
+	margin-bottom: 7%;
+}
+
+#homeContainer h6 {
+	margin-top: 3%;
+}
+
 #header{
 	width:100%;
-	height:230px;
+	height:170px;
 	background-color:#222222;
 	padding-bottom:20px;
 	box-shadow:0 0 20px #000000;
 	position:relative;
 	border-bottom:solid #444444 8px;
 }
+
 #entete{
-	width:1050px;
-	height:230px;
-	margin:auto;
+	margin-left: 10%;
 }
-#logo{
-	float:left;
-	width:205px;
-	height:192px;
-	position:relative;
-	top:50%;
-	margin-top:-96px;
-}
-#titre{
+
+#title{
 	float:left;
 	color:#CCCCCC;
 	font-size:32px;
@@ -57,18 +45,18 @@ body{
 	top:40px;
 	text-shadow:1px 1px #111111, 2px 2px #000000;
 }
+
 #imLogo {
 	max-width: 100%;
 	max-height: 100%;
 }
 
 #connect{
-	height:30px;
-	width:380px;
-	padding:10px;
+	width:20%;
+	padding:0.7%;
 	position:absolute;
-	right:30px;
-	top:65%;
+	right:5%;
+	top:35%;
 	background-color:#AAAAAA;
 	border-radius:10px;
 	border:4px solid #111111;
@@ -77,90 +65,134 @@ body{
 	font-size:18px;
 	text-align:center;
 }
+
 #connect a{
 	color:#222222;
 	font-weight:bold;
 	text-decoration: none;
 }
+
 #connect a :visited{
 	color:#222222;
 	font-weight:bold;
 	text-decoration: none;
 }
+
 #corps{
 	float:left;
 	width: 100%;
 	background-color:#EDEDED;
 }
+
 #menu{
 	float : left;
 	width: 20%;
 	min-height:355px;
-	margin-left: 3px;
+	margin-left: 3%;
+	margin-top:5%;
 	color:#222222;
 	font-size:15px;
 }
+
 #menu p{
 	font-weight:bold;
 }
+
 #menu a{
 	color:#222222;
 	text-decoration: none;
 }
+
 #menu a :visited{
 	color:#222222;
 	text-decoration: none;
 }
+
 #menuInt{
 	margin-top: 2px;
 	margin-left: 50px;
 	min-height:367px;
 }
+
 #texte{
 	float:left ;
-	width: 79%;
+	width: 75%;
+	margin:auto;
 	margin-left: 5px;
 	text-align: center;
 	min-height:380px;
 	color:#222222;
 }
+
 #spacer {
   clear: both;
 }
+
 #footer{
 	width:100%;
-	height:50px;
-	padding-top:10px;
 	background-color:#222222;
 	border-top:solid #444444 8px;
 	padding-top:20px;
-	position:absolute;
-	bottom:0px;
+	padding-bottom: 5%;
 	box-shadow:0 -5px 5px #858585;
 	position:relative;
 	color:#CCCCCC;
 	font-size:12px;
 	text-align:center;
 }
-label{
-	font-size:12pt;
-    font-weight:bold;
-}
-h1{
-	text-shadow:1px 1px 2px #333333;
-}
-* a:hover{
-	text-decoration: underline;
-}
-#menu a:hover{
-	text-decoration: underline;
+
+.collapsible-body a:hover{
+	text-decoration: underline !important;
 	font-weight: bold;
 }
+
 .centreImage{
  width:30%;
  }
+
 .icone{
  	margin-right : 10px;
  	position:relative;
  	top:2px;
+}
+
+#bigForm {
+	width:60%;
+	margin:auto;
+	margin-bottom: 7%;
+}
+
+#bigTable {
+	width:90%;
+	margin:auto;
+	margin-bottom: 7%;
+}
+
+#searchForm {
+	width:60%;
+	margin:auto;
+}
+
+#bigForm button, #smallForm button {
+	float:right;
+}
+#smallForm {
+	width:40%;
+	margin:auto;
+	margin-bottom: 7%;
+}
+ #plusSign {
+	margin-block-start: 0em;
+	margin-inline-start: 0em;
+	margin-inline-end: 0em;
+	margin-block-end: 0em;
+	display: inline-block;
+ }
+
+.row button {
+	background-color: #039be5;
+}
+
+table.highlight>tbody>tr:hover {
+    background-color: #ced1d4 !important;
 }

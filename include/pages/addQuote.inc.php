@@ -12,21 +12,38 @@ $quoteManager=new QuoteManager($pdo);
 <?php
 if (empty($_POST['per_num'])){
  ?>
-<form method="post" action="#">
-    <label>Staff member :</label><select name="per_num">
-    <?php
-    foreach ($staff as $st){
-      ?><option value="<?php echo $st->getStaffNum();?>"><?php echo $st->getStaffName();?></option><?php
-    }
-    ?>
-    </select>
-    <br>
-    <label>Date : </label><input type="date" name="quo_date" required>
-    <br>
-    <label>Quote : </label><textarea name="quo_quote"></textarea>
-    <br>
-    <input type="submit" value="Submit">
-</form>
+<div class="row" id="bigForm">
+  <form method="post" class="col s12" action="#">
+    <div class="row">
+      <div class="col s12">
+        <label>Select Member</label>
+        <select class="browser-default" name="per_num">
+          <option value="" disabled selected>Choose your option</option>
+          <?php
+          foreach ($staff as $st){
+            ?><option value="<?php echo $st->getStaffNum();?>"><?php echo $st->getStaffName();?></option><?php
+          }
+          ?>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">calendar_today</i>
+        <input type="text" class="datepicker" name="quo_date" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="quoteTextArea" class="materialize-textarea" name="quo_quote" required></textarea>
+        <label for="quoteTextArea">Write the quote here...</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
 <?php
 }
 else {
@@ -35,32 +52,50 @@ else {
   $listWord=$quote[1];
   if (count($listWord)!=0){
     ?>
-    <form method="post" action="#">
-        <label>Staff member :</label><select name="per_num">
-        <?php
-        foreach ($staff as $st){
-          if ($st->getStaffNum()==$_POST['per_num']){
-            ?><option value="<?php echo $st->getStaffNum();?>" selected><?php echo $st->getStaffName();?></option><?php
-          }
-          else {
-          ?><option value="<?php echo $st->getStaffNum();?>"><?php echo $st->getStaffName();?></option><?php
-        }
-        }
-        ?>
-        </select>
-        <br>
-        <label>Date : </label><input type="date" name="quo_date" value="<?php echo $_POST['quo_date'];?>">
-        <br>
-        <label>Quote : </label><textarea name="quo_quote"><?php echo $str;?></textarea>
-        <br>
+    <div class="row" id="bigForm">
+      <form method="post" class="col s12" action="#">
+        <div class="row">
+          <div class="col s12">
+            <label>Select Member</label>
+            <select class="browser-default" name="per_num">
+              <?php
+              foreach ($staff as $st){
+                if ($st->getStaffNum()==$_POST['per_num']){
+                  ?><option value="<?php echo $st->getStaffNum();?>" selected><?php echo $st->getStaffName();?></option><?php
+                }
+                else {
+                ?><option value="<?php echo $st->getStaffNum();?>"><?php echo $st->getStaffName();?></option><?php
+                }
+              }
+              ?>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">calendar_today</i>
+            <input type="text" class="datepicker" name="quo_date" value="<?php echo $_POST['quo_date'];?>" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="quoteTextArea" class="materialize-textarea" name="quo_quote" required><?php echo $str;?></textarea>
+          </div>
+        </div>
         <?php
         foreach ($listWord as $word){?>
-          <img src="image/erreur.png"/><strong style="color:red"> <?php echo $word;?> </strong> is not allowed<br><?php
+          <div class="row">
+            <div class="input-field col s12">
+              <img src="image/error.png"/><strong style="color:red"> <?php echo $word;?> </strong> is not allowed
+            </div>
+          </div><?php
         }
         ?>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
   <?php
   }
   else {
@@ -68,7 +103,9 @@ else {
     $quoteManager->add($quote);
     ?>
     <br>
-    <img src="image/valid.png"> Quote successfully added !<?php
+    <img src="image/valid.png"> Quote successfully added !
+    <p>Automatic redirection in 2 seconds.</p>
+    <meta http-equiv="refresh" content="2; URL=index.php?page=6"><?php
   }
 }
  ?>

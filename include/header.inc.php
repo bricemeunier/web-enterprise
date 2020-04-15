@@ -11,6 +11,8 @@ session_start();
 		<?php echo $title ?>
 		</title>
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 </head>
 	<body>
@@ -27,10 +29,7 @@ session_start();
    ?>
 		</div>
 		<div id="entete">
-			<div id="logo">
-
-			</div>
-			<div id="titre">
+			<div id="title">
 				Funny quotes,<br />Share your best ones !!!
 			</div>
 		</div>

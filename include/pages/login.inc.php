@@ -7,14 +7,40 @@
 
 
   <h1><strong>Login</strong></h1>
-  <form action="#" method="post">
 
-  	<strong>Username :  </strong><input type="text" name="user" required><br>
-  	<strong>password :  </strong><input type="password" name="password" required><br>
-    <img src="image/nb/<?php echo $image1; ?>.jpg"><strong> + </strong><img src="image/nb/<?php echo $image2; ?>.jpg"><strong> = </strong>
-    <input type="number" name="captcha" required><br>
-  	<input type="submit" value="Submit"/>
-  </form>
+  <div class="row" id="smallForm">
+
+    <form class="col s12" action="#" method="post">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="username" type="text" name="user" class="validate" required>
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">lock</i>
+          <input id="password" type="password" name="password" class="validate" required>
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <img src="image/nb/<?php echo $image1; ?>.jpg">
+          <h3 id="plusSign"><strong>+</strong></h3>
+          <img src="image/nb/<?php echo $image2; ?>.jpg">
+        </div>
+        <div class="input-field col s6">
+          <input id="captcha" type="number" name="captcha" required><br>
+          <label for="captcha">Result</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
   <?php
 }
 else {

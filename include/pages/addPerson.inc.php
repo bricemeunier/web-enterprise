@@ -2,17 +2,60 @@
 if (empty($_POST['per_name']) && empty($_POST["school"]) && empty($_POST["position"])){?>
 
 <h1>Add a person</h1>
-<form method="post" action="#">
-    <label>Surname :</label><input name="per_name" type="text" required><br>
-    <label>First Name : </label><input type="text" name="per_f_name" required><br>
-    <label>Phone:</label><input type="tel" name="per_phone" required><br>
-    <label>Email :</label><input type="email" name="per_email" required><br>
-    <label>Login :</label><input type="text" name="per_login" required><br>
-    <label>Password :</label><input type="password" name="per_password" required><br>
-		<label>Category :<input type="radio" name="category" value="student" checked> Student
-  										<input type="radio" name="category" value="staff"> Staff member<br>
-    <input type="submit" value="Submit">
-</form>
+<div class="row" id="bigForm">
+  <form class="col s12" method="post" action="#">
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">face</i>
+        <input id="first_name" type="text" name="per_f_name" class="validate" required>
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="last_name" type="text" name="per_name" class="validate" required>
+        <label for="last_name">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">phone</i>
+        <input id="tel_number" type="tel" name="per_phone" class="validate" required>
+        <label for="tel_number">Phone</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input id="email_address" type="email" name="per_email" class="validate" required>
+        <label for="email_address">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="username" type="text" name="per_login" class="validate" required>
+        <label for="username">Username</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input id="password" type="password" name="per_password" class="validate" required>
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <label>
+      <input class="with-gap" name="category" type="radio" value="student" checked />
+      <span>Student</span>
+    </label>
+    <label>
+      <input class="with-gap" name="category" type="radio" value="staff"/>
+      <span>Staff member</span>
+    </label>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
 <?php
 }
 
@@ -33,40 +76,69 @@ else if (empty($_POST["school"]) && empty($_POST["position"]) && !empty($_POST["
   if ($loginValid->result==0){
       if ($_POST['category']=='student'){?>
         <h1><strong>Add a student</strong></h1>
-        <form method="post" action="#">
-            <label>School :</label><select name="school">
-            <?php
-            foreach ($sch as $s){
-              ?><option value="<?php echo $s->getSchNum();?>"><?php echo $s->getSchName();?></option><?php
-            }
-            ?>
-            </select>
-            <br>
-            <label>Year : </label><SELECT name="year">
-            <?php
-            foreach ($year as $y){
-              ?><option value="<?php echo $y->getYearNum();?>"><?php echo $y->getYearName();?></option><?php
-            }
-            ?>
-            </select>
-            <br>
-            <input type="submit" value="Submit">
-        </form><?php
+        <div class="row" id="smallForm">
+          <form method="post" class="col s12" action="#">
+            <div class="row">
+              <div class="col s12">
+                <label>Select school</label>
+                <select class="browser-default" name="school">
+                  <option value="" disabled selected>Choose your option</option>
+                  <?php
+                  foreach ($sch as $s){
+                    ?><option value="<?php echo $s->getSchNum();?>"><?php echo $s->getSchName();?></option><?php
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <label>Select year</label>
+                <select class="browser-default" name="year">
+                  <option value="" disabled selected>Choose your option</option>
+                  <?php
+                  foreach ($year as $y){
+                    ?><option value="<?php echo $y->getYearNum();?>"><?php echo $y->getYearName();?></option><?php
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+        </div><?php
       }
       else{?>
         <h1><strong>Add a staff member</strong></h1>
-        <form method="post" action="#">
-            <label>Professional phone :</label><input type="tel" name="staff_pro_phone"><br>
-            <label>Position : </label><SELECT name="position">
-            <?php
-            foreach ($pos as $position){
-              ?><option value="<?php echo $position->getPosNum();?>"><?php echo $position->getPosName();?></option><?php
-            }
-            ?>
-            </select>
-            <br>
-            <input type="submit" value="Submit">
-        </form><?php
+        <div class="row" id="smallForm">
+          <form method="post" class="col s12" action="#">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">phone</i>
+                <input id="proPhoneForm" type="tel" name="staff_pro_phone" class="validate" required>
+                <label for="proPhoneForm">Professional phone</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <label>Select position</label>
+                <select class="browser-default" name="position">
+                  <option value="" disabled selected>Choose your option</option>
+                  <?php
+                  foreach ($pos as $position){
+                    ?><option value="<?php echo $position->getPosNum();?>"><?php echo $position->getPosName();?></option><?php
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+        </div><?php
       }
     }
     else {
@@ -87,6 +159,8 @@ else {
     ?>
     <br>
     <img src="image/valid.png"> Student added successfully !
+    <p>Automatic redirection in 2 seconds.</p>
+    <meta http-equiv="refresh" content="2; URL=index.php?page=2">
     <?php
   }
   else {
@@ -96,6 +170,8 @@ else {
     $staffManager->add($sta);
     ?>
     <br>
-    <img src="image/valid.png"> Staff member added successfully !<?php
+    <img src="image/valid.png"> Staff member added successfully !
+    <p>Automatic redirection in 2 seconds.</p>
+    <meta http-equiv="refresh" content="2; URL=index.php?page=2"><?php
   }
 }?>

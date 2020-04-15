@@ -23,7 +23,6 @@ class StudentManager{
 
 		$list=array();
 		foreach ($_SESSION['pers'] as $tmp){
-			echo $tmp;
 			$list[]=$tmp;
 		}
 

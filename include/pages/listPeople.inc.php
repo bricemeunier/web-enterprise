@@ -6,8 +6,15 @@
 	?>
 		<h1>People list</h1>
 		<h3>Currently <?php echo $nbPersonne->total; ?> people registered</h3>
-	<table>
-		<tr><th>Id</th><th>Surname</th><th>First Name</th></tr>
+	<table id="bigForm" class="highlight centered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Surname</th>
+				<th>First Name</th>
+			</tr>
+		</thead>
+		<tbody>
 		<?php //$produits est un tableau d'objet produit
 			foreach ($person as $pers){?>
 				<tr><td><a href=index.php?page=9&num=<?php echo $pers->getPersonNum();?>&name=<?php echo $pers->getPersonName();?>>
@@ -18,5 +25,6 @@
 				<?php
 			}
 		?>
-		</table>
-		<br>
+		</tbody>
+	</table>
+<br>

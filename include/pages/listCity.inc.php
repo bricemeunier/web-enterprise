@@ -6,8 +6,14 @@ $nbCity=$cityManager->getCityNumber();
 ?>
 	<h1>City list</h1>
 	<h3>Currently <?php echo $nbCity->total; ?> cities registered</h3>
-<table id>
-	<tr><th>Id</th><th>Name</th></tr>
+<table id="smallForm" class="highlight centered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
 	<?php //$produits est un tableau d'objet produit
 		foreach ($city as $c){?>
 			<tr><td><?php echo $c->getCityNum();?>
@@ -16,5 +22,6 @@ $nbCity=$cityManager->getCityNumber();
 			<?php
 		}
 	?>
-	</table>
-	<br />
+	</tbody>
+</table>
+<br/>

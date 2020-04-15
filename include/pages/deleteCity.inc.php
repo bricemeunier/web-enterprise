@@ -6,17 +6,26 @@ $city=$cityManager->getAllCity();
  if (empty($_POST['city_num'])){
   ?>
 <h1>Delete a city</h1>
-
- <form method="post" action="#">
-   <label>City :</label><select name="city_num">
-     <?php
-     foreach ($city as $c){
-       ?><option value="<?php echo $c->getCityNum();?>"><?php echo $c->getCityName();?></option><?php
-     }
-     ?>
-   </select>
-   <input type="submit" value="Submit">
- </form>
+<div class="row" id="smallForm">
+  <form method="post" class="col s12" action="#">
+   <div class="row">
+     <div class="col s12">
+       <label>Select City</label>
+       <select class="browser-default" name="city_num">
+         <option value="" disabled selected>Choose city</option>
+         <?php
+         foreach ($city as $c){
+           ?><option value="<?php echo $c->getCityNum();?>"><?php echo $c->getCityName();?></option><?php
+         }
+         ?>
+       </select>
+     </div>
+   </div>
+   <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+     <i class="material-icons right">send</i>
+   </button>
+  </form>
+</div>
 <?php
 }
 else {

@@ -5,19 +5,29 @@
 	if (empty($_GET['quoNum'])){
 	?>
 		<h1>Delete a quote</h1>
-		<table>
-			<th>Staff member name</th><th>Quote</th><th>Date</th><th>Mark average</th><th>Delete</th></tr>
-			<?php //$produits est un tableau d'objet produit
-				foreach ($quote as $q){?>
-					<tr><td><?php echo $q->getStaffFirstName()." ".$q->getStaffName();?>
-					</td><td><?php echo $q->getQuoteText();?>
-					</td><td><?php echo $q->getQuoteDate();?>
-					</td><td><?php echo $q->getQuoteAverageMark();?>
-					</td><td><a href="index.php?page=15&quoNum=<?php echo $q->getQuoteNum();?>"><img src="image/error.png"></a>
-					</td></tr>
-					<?php
-				}
-			?>
+		<table id="bigTable" class="highlight centered">
+			<thead>
+				<tr>
+					<th>Staff member name</th>
+					<th>Quote</th>
+					<th>Date</th>
+					<th>Mark average</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php //$produits est un tableau d'objet produit
+					foreach ($quote as $q){?>
+						<tr><td><?php echo $q->getStaffFirstName()." ".$q->getStaffName();?>
+						</td><td><?php echo $q->getQuoteText();?>
+						</td><td><?php echo $q->getQuoteDate();?>
+						</td><td><?php echo $q->getQuoteAverageMark();?>
+						</td><td><a href="index.php?page=15&quoNum=<?php echo $q->getQuoteNum();?>"><i class="material-icons prefix">delete</i></a>
+						</td></tr>
+						<?php
+					}
+				?>
+			</tbody>
 		</table>
 		<br />
 	<?php
