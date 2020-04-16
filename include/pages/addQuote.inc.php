@@ -105,7 +105,7 @@ else {
     <br>
     <img src="image/valid.png"> Quote successfully added !
     <p>Automatic redirection in 2 seconds.</p>
-    <meta http-equiv="refresh" content="2; URL=index.php?page=6"><?php
+    <meta http-equiv="refresh" content="2; URL=index.php?page=13"><?php
   }
 }
  ?>

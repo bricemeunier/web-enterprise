@@ -26,13 +26,13 @@ else {
 	$cityManager=new CityManager($pdo);
 	if ($cityManager->search($city->getCityName())){
 	  $cityManager->add($city);?>
-	  <img src="image/valid.png"><strong><?php echo $_POST['city_name'];?></strong> added successfully
+	  <img src="image/valid.png"><strong> <?php echo $_POST['city_name'];?></strong> added successfully
     <p>Automatic redirection in 2 seconds.</p>
     <meta http-equiv="refresh" content="2; URL=index.php?page=8">
 	  <?php
 	}
 	else {?>
-	  <img src="image/erreur.png"><strong><?php echo $_POST['city_name'];?> already exists</strong>
+	  <img src="image/erreur.png"><strong> <?php echo $_POST['city_name'];?> already exists</strong>
 	  <meta http-equiv="refresh" content="4; URL= index.php?page=8">
 	<?php
 	}

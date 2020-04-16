@@ -33,8 +33,7 @@
 								<?php
 								if ($bool) echo '<li><a href="index.php?page=5">Add</a></li>';
 								?>
-								<li><a href="index.php?page=6">List</a></li>
-								<li><a href="index.php?page=13">Search</a></li>
+								<li><a href="index.php?page=13">List</a></li>
 								<li><a href="index.php?page=14">Validate</a></li>
 								<li><a href="index.php?page=15">Delete</a></li>
 							</ul>
@@ -74,8 +73,7 @@
 								<?php
 								if ($bool) echo '<li><a href="index.php?page=5">Add</a></li>';
 								?>
-								<li><a href="index.php?page=6">List</a></li>
-								<li><a href="index.php?page=13">Search</a></li>
+								<li><a href="index.php?page=13">List</a></li>
 							</ul>
 						</div>
 					</li>

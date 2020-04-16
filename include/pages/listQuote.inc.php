@@ -27,20 +27,7 @@
 				<tr><td><?php echo $q->getStaffFirstName()." ".$q->getStaffName();?>
 				</td><td><?php echo $q->getQuoteText();?>
 				</td><td><?php echo $q->getQuoteDate();?>
-				</td><td><?php echo intVal($q->getQuoteAverageMark())."/20";
-				if (isset($_SESSION['user_num'])) {
-					if ($persManager->isStudent($_SESSION['user_num'])){
-						if ($quoteManager->hasMarkedQuote($q->getQuoteNum())==0){?>
-						</td><td><a href="index.php?page=12&quo_num=<?php echo $q->getQuoteNum(); ?>"><img src="image/update.png"/>
-								<?php
-						}
-						else {?>
-						</td><td><img src="image/error.png"/>
-							<?php
-						}
-					}
-				}
-				?>
+				</td><td><?php if (intVal($q->getQuoteAverageMark())>0) echo intVal($q->getQuoteAverageMark())."/20"; else echo "N/A";?>
 				</td></tr>
 				<?php
 			}

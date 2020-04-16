@@ -17,7 +17,7 @@ class CityManager{
 		public function deleteCity($citynum){
 
 			$req = $this->db->prepare(
-			'UPDATE school SET city_num=NULL WHERE city_num=:num');
+			'UPDATE school SET city_num=1 WHERE city_num=:num');
 
 			$req->bindValue(':num',$citynum);
 			$req->execute();
@@ -37,7 +37,7 @@ class CityManager{
 		}
 
     public function getCityNumber(){
-      $req='SELECT COUNT(*) as total FROM city';
+      $req='SELECT COUNT(*) as total FROM city WHERE city_num!=1';
       $sql=$this->db->prepare($req);
       $sql->execute();
       return $sql->fetch(PDO::FETCH_OBJ);
@@ -48,7 +48,7 @@ class CityManager{
 		public function getAllCity(){
 			$listCity=array();
 
-			$sql='SELECT city_num,city_name FROM city ORDER BY city_name';
+			$sql='SELECT city_num,city_name FROM city WHERE city_num!=1 ORDER BY city_name';
 
 			$req=$this->db->prepare($sql);
 			$req->execute();
@@ -63,7 +63,7 @@ class CityManager{
 		}
 
 		public function search($cityName){
-			$sql="SELECT count(*) as verif FROM city WHERE city_name='".$cityName."'";
+			$sql="SELECT count(*) as verif FROM city WHERE city_num!=1 AND city_name='".$cityName."'";
 			$req=$this->db->prepare($sql);
 			$req->execute();
 

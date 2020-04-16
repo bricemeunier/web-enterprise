@@ -75,7 +75,7 @@ else {
         <tr><td><?php echo $q->getStaffFirstName()." ".$q->getStaffName();?>
         </td><td><?php echo $q->getQuoteText();?>
         </td><td><?php echo $q->getQuoteDate();?>
-        </td><td><?php echo intVal($q->getQuoteAverageMark())."/20";
+        </td><td><?php if (intVal($q->getQuoteAverageMark())>0) echo intVal($q->getQuoteAverageMark())."/20"; else echo "N/A";
         if ($quoteManager->hasMarkedQuote($q->getQuoteNum())==0){?>
         </td><td><a href="index.php?page=12&quo_num=<?php echo $q->getQuoteNum(); ?>"><i class="material-icons prefix">grade</i></a>
             <?php

@@ -11,5 +11,5 @@
   <h6>Be aware that some words are automatically banned from the quotes</h6>
 
   <h5 style="text-align:center; margin-top:5%;"><strong>Admin have all rights on the website !!</strong></h5>
-  
+
 </div>

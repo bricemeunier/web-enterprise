@@ -123,15 +123,13 @@
 			}
 		  $_SESSION['pers']=$_POST;
 		  $loginValid=$persManager->checkIfLoginIsAvailable($_POST['per_login'],$_GET['num']);
-		  $_SESSION['previouslogin']=$_POST['per_login'];
-			$num=$persManager->getIdPerson($_SESSION['previouslogin'])->per_num;
-			$_SESSION['numPersUpdated']=$num;
+			$_SESSION['numPersUpdated']=$_GET['num'];
 
 		  if ($loginValid){
 
 		      if ($_POST['category']=='student'){
 
-						$stu=$persManager->getStudent($num);
+						$stu=$persManager->getStudent($_SESSION['numPersUpdated']);
 						?>
 		        <h1><strong>Update student's info</strong></h1>
 						<div class="row" id="smallForm">

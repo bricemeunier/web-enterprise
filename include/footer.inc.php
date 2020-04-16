@@ -1,6 +1,7 @@
 
 <div id="footer">
-Write the most famous or funniest quote you know !
+  <p>Website developed using PHP & MySQL</p>
+  <p>Third party framework & library used : <a href="https://api.jquery.com/">jQuery</a>, <a href="https://materializecss.com/">Materializecss</a></p>
 <br />
     © Brice Meunier, Honours Year at the Robert Gordon University
 

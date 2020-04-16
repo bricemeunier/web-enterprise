@@ -25,7 +25,7 @@ else {
   ?>
   <img src="image/valid.png"> Your mark of <?php echo $_POST['mark_value'];?> has been added successfully !<br>
   Automatic redirection in 2 seconds.
-  <meta http-equiv="refresh" content="2; URL=index.php?page=6">
+  <meta http-equiv="refresh" content="2; URL=index.php?page=13">
 
   <?php
 }?>
