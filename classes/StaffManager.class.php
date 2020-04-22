@@ -51,7 +51,7 @@ class StaffManager{
 		$req->execute();
 
 		while ($staff=$req->fetch(PDO::FETCH_OBJ)){
-			$listStaff[]=new staff($staff);
+			$listStaff[]=new Staff($staff);
 		}
 
 		$req->closeCursor();
