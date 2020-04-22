@@ -27,7 +27,7 @@
 				<tr><td><?php echo $q->getStaffFirstName()." ".$q->getStaffName();?>
 				</td><td><?php echo $q->getQuoteText();?>
 				</td><td><?php echo $q->getQuoteDate();?>
-				</td><td><?php //if (intVal($q->getQuoteAverageMark())>0) echo intVal($q->getQuoteAverageMark())."/20"; else echo "N/A";?>
+				</td><td><?php if (intVal($q->getQuoteAverageMark())>0) echo intVal($q->getQuoteAverageMark())."/20"; else echo "N/A";?>
 				</td></tr>
 				<?php
 			}
