@@ -8,8 +8,8 @@ class Staff extends People{
 		public function __construct($val = array(),$staffPhone,$posNum){
 				if (!empty($val)){
 					parent::__construct($val);
-					$this->staffPhone=$staffPhone;
-					$this->posNum=$posNum;
+					//$this->staffPhone=$staffPhone;
+					//$this->posNum=$posNum;
 					foreach ($val as $value=>$attr){
 						if ($value=="per_num"){
 							$this->pernum=$attr;
