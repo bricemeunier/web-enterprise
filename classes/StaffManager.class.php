@@ -43,14 +43,14 @@ class StaffManager{
 
 	public function getAllStaff(){
 		$listStaff=array();
-		return null;
+
 		$sql='SELECT s.per_num,per_name,staff_pro_phone,pos_num FROM staff s
 					JOIN people p ON (p.per_num=s.per_num)';
 
 		$req=$this->db->prepare($sql);
 		$req->execute();
 		while ($staff=$req->fetch(PDO::FETCH_OBJ)){
-			$listStaff[]=new staff($staff,$staff->staff_pro_phone,$staff->pos_num);
+			$listStaff[]=new staff($staff,"00","2");
 		}
 
 		$req->closeCursor();
