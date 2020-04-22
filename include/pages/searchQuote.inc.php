@@ -18,15 +18,15 @@ $staff=$staffManager->getAllStaff();
           <?php
           foreach ($staff as $sta){
             if (!(empty($_POST['per_num']))){
-              if ($sta->getStaffNum()==$_POST['per_num']){
-                ?><option value="<?php echo $sta->getStaffNum();?>" selected><?php echo $sta->getStaffName();?></option><?php
+              if ($sta->per_num==$_POST['per_num']){
+                ?><option value="<?php echo $sta->per_num;?>" selected><?php echo $sta->per_name;?></option><?php
               }
               else {
-                ?><option value="<?php echo $sta->getStaffNum();?>"><?php echo $sta->getStaffName();?></option><?php
+                ?><option value="<?php echo $sta->per_num;?>"><?php echo $sta->per_name;?></option><?php
               }
             }
             else {
-              ?><option value="<?php echo $sta->getStaffNum();?>"><?php echo $sta->getStaffName();?></option><?php
+              ?><option value="<?php echo $sta->per_num;?>"><?php echo $sta->per_name;?></option><?php
             }
           }
           ?>

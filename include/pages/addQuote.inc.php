@@ -21,7 +21,7 @@ if (empty($_POST['per_num'])){
           <option value="" disabled selected>Choose your option</option>
           <?php
           foreach ($staff as $st){
-            ?><option value="<?php echo $st->getStaffNum();?>"><?php echo $st->getStaffName();?></option><?php
+            ?><option value="<?php echo $st->per_num;?>"><?php echo $st->per_name;?></option><?php
           }
           ?>
         </select>
@@ -61,11 +61,11 @@ else {
             <select class="browser-default" name="per_num">
               <?php
               foreach ($staff as $st){
-                if ($st->getStaffNum()==$_POST['per_num']){
-                  ?><option value="<?php echo $st->getStaffNum();?>" selected><?php echo $st->getStaffName();?></option><?php
+                if ($st->per_num==$_POST['per_num']){
+                  ?><option value="<?php echo $st->per_num;?>" selected><?php echo $st->per_name;?></option><?php
                 }
                 else {
-                ?><option value="<?php echo $st->getStaffNum();?>"><?php echo $st->getStaffName();?></option><?php
+                ?><option value="<?php echo $st->per_num;?>"><?php echo $st->per_name;?></option><?php
                 }
               }
               ?>
