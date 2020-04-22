@@ -116,6 +116,7 @@
 		}
 
 		else if (empty($_POST["school"]) && empty($_POST["position"])) {
+			$_POST = array_map ( 'htmlspecialchars' , $_POST );
 			if (!(empty($_POST['per_password']))){
 				$p=new People();
 				$p->setPersonPassword($_POST['per_password']);

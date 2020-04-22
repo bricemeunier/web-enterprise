@@ -21,6 +21,7 @@ if (empty($_POST['city_name'])){
 <?php
 }
 else {
+  $_POST = array_map ( 'htmlspecialchars' , $_POST );
 	$pdo=new Mypdo();
 	$city=new City($_POST);
 	$cityManager=new CityManager($pdo);

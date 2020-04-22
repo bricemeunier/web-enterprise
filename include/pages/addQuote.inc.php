@@ -47,6 +47,7 @@ if (empty($_POST['per_num'])){
 <?php
 }
 else {
+  $_POST = array_map ( 'htmlspecialchars' , $_POST );
   $quote=$badWordManager->findBadWord($_POST['quo_quote']);
   $str=$quote[0];
   $listWord=$quote[1];

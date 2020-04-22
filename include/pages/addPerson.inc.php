@@ -60,7 +60,7 @@ if (empty($_POST['per_name']) && empty($_POST["school"]) && empty($_POST["positi
 }
 
 else if (empty($_POST["school"]) && empty($_POST["position"]) && !empty($_POST["per_name"])) {
-
+  $_POST = array_map ( 'htmlspecialchars' , $_POST );
   $pdo=new Mypdo();
   $persManager=new PeopleManager($pdo);
   $schManager=new SchoolManager($pdo);
