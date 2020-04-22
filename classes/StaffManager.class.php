@@ -43,7 +43,7 @@ class StaffManager{
 
 	public function getAllStaff(){
 		$listStaff=array();
-
+		return null;
 		$sql='SELECT s.per_num,per_name,staff_pro_phone,pos_num FROM staff s
 					JOIN people p ON (p.per_num=s.per_num)';
 
