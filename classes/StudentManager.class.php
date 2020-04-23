@@ -30,11 +30,11 @@ class StudentManager{
 		$req = $this->db->prepare('UPDATE student SET sch_num='.$_POST['school'].', year_num='.$_POST['year'].' WHERE per_num='.$studentNum);
 		$req->execute();
 		if ($list[5]==''){
-			$req = 'UPDATE people SET per_name="'.$list[0].'", per_f_name="'.$list[1].'",per_phone="'.$list[2].'",
+			$req = 'UPDATE people SET per_name="'.$list[1].'", per_f_name="'.$list[0].'",per_phone="'.$list[2].'",
 			per_email="'.$list[3].'",per_login="'.$list[4].'" WHERE per_num='.$studentNum;
 		}
 		else {
-			$req = 'UPDATE people SET per_name="'.$list[0].'", per_f_name="'.$list[1].'",per_phone="'.$list[2].'",
+			$req = 'UPDATE people SET per_name="'.$list[1].'", per_f_name="'.$list[0].'",per_phone="'.$list[2].'",
 			per_email="'.$list[3].'",per_login="'.$list[4].'", per_pwd="'.$list[5].'" WHERE per_num='.$studentNum;
 		}
 

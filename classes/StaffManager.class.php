@@ -25,14 +25,15 @@ class StaffManager{
 		foreach ($_SESSION['pers'] as $tmp){
 			$list[]=$tmp;
 		}
+
 		$req = $this->db->prepare('UPDATE staff SET staff_pro_phone="'.$_POST['staff_pro_phone'].'", pos_num='.$_POST['position'].' WHERE per_num='.$staffNum);
 		$req->execute();
 		if ($list[5]==''){
-			$req = 'UPDATE people SET per_name="'.$list[0].'", per_f_name="'.$list[1].'",per_phone="'.$list[2].'",
+			$req = 'UPDATE people SET per_name="'.$list[1].'", per_f_name="'.$list[0].'",per_phone="'.$list[2].'",
 			per_email="'.$list[3].'",per_login="'.$list[4].'" WHERE per_num='.$staffNum;
 		}
 		else {
-			$req = 'UPDATE people SET per_name="'.$list[0].'", per_f_name="'.$list[1].'",per_phone="'.$list[2].'",
+			$req = 'UPDATE people SET per_name="'.$list[1].'", per_f_name="'.$list[0].'",per_phone="'.$list[2].'",
 			per_email="'.$list[3].'",per_login="'.$list[4].'", per_pwd="'.$list[5].'" WHERE per_num='.$staffNum;
 		}
 
